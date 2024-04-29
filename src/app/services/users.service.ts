@@ -24,4 +24,10 @@ export class UsersService {
    public getUser(id:number):Observable<any>{
       return this._http.get(`${this.url}/user/${id}`);
    }
+
+   public login(user:any):Observable<any>{
+      let userForm = JSON.stringify(user);
+      let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+      return this._http.post(`${this.url}/login/`,userForm,{headers});
+   }
 }
