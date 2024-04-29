@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Regresar</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        Login
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-input type="email" label="Correo Electronico" label-placement="floating" fill="outline" placeholder="Ingrese su correo"></ion-input>
+      <br>
+        <ion-input label="Contraseña" label-placement="floating" fill="outline" placeholder="*******"></ion-input>
+      <br>
+      <div class="ion-text-center">
+        <ion-button class="ion-margin-auto" size="default" fill="outline" shape="round" [disabled]="true">Ingresar</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

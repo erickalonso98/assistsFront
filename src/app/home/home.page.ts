@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public title:string;
+  constructor(private _router:Router) {
+    this.title = "Aplicacion de Asistencias";
+  }
 
-  constructor() {}
+  public toLogin(){
+    this._router.navigate(['/login']);
+  }
 
 }
