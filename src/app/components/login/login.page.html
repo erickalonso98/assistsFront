@@ -6,7 +6,6 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content class="ion-padding">
   <ion-card>
     <ion-card-header>
@@ -15,15 +14,25 @@
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-        <ion-input type="email" #email="ngModel" [(ngModel)]="this.user.email" label="Correo Electronico" label-placement="floating" fill="outline" placeholder="Ingrese su correo" required=""></ion-input>
-        <div slot="label" *ngIf="!this.email.valid && this.email.touched"><ion-text color="danger">Ingrese su correo</ion-text></div>
-      <br>
-        <ion-input type="password" #password="ngModel" [(ngModel)]="this.user.password" label="Contraseña" label-placement="floating" fill="outline" placeholder="*******" required=""></ion-input>
-        <div slot="label" *ngIf="!this.password.valid && this.password.touched"><ion-text color="danger">Ingrese su contraseña</ion-text></div>
-      <br>
-      <div class="ion-text-center">
-        <ion-button (click)="loginSubmit()" class="ion-margin-auto" size="default" fill="outline" shape="round">Ingresar</ion-button>
-      </div>
+      <form #formLogin="ngForm" (ngSubmit)="this.onSubmit(formLogin)">
+          <ion-input type="email" #email="ngModel" name="email" [(ngModel)]="this.user.email" label="Correo Electronico" label-placement="floating" fill="outline" placeholder="Ingrese su correo" required=""></ion-input>
+          <div slot="label" *ngIf="!this.email.valid && this.email.touched">
+            <ion-text color="danger">
+              Ingrese su correo
+            </ion-text>
+          </div>
+        <br>
+          <ion-input type="password" #password="ngModel" name="password" [(ngModel)]="this.user.password" label="Contraseña" label-placement="floating" fill="outline" placeholder="*******" required=""></ion-input>
+          <div slot="label" *ngIf="!this.password.valid && this.password.touched">
+            <ion-text color="danger">
+              Ingrese su contraseña
+            </ion-text>
+        </div>
+        <br>
+        <div class="ion-text-center">
+          <ion-button type="submit" class="ion-margin-auto" size="default" fill="outline" shape="round" [disabled]="this.formLogin.invalid">Ingresar</ion-button>
+        </div>
+      </form>
     </ion-card-content>
   </ion-card>
 </ion-content>

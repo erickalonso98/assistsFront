@@ -1,19 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { global } from './global';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
+  private _http = inject(HttpClient);
   public url:string;
-  constructor(private _http:HttpClient) {
+  constructor() {
     this.url = global.url;
    }
 
-   public getRoles():Observable<any>{
-    return this._http.get(`${this.url}/roles`);
+   public getRoles(){
+    return this._http.get<User[]>(`${this.url}/roles`);
    }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { RolesService } from 'src/app/services/roles.service';
 })
 export class ListRolesPage implements OnInit {
 
-  constructor(private _rolesService:RolesService) { }
+  private _rolesService = inject(RolesService);
+
+  constructor() { }
 
   ngOnInit() {
     this.GetRoles();
@@ -18,9 +20,6 @@ export class ListRolesPage implements OnInit {
     this._rolesService.getRoles().subscribe(
       (response) => {
         console.log(response);
-      },
-      (error) => {
-        console.error(<any>error);
       }
     );
   }
