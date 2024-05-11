@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import { AlertController } from '@ionic/angular';
 import { User } from 'src/app/models/User';
 import { NgForm } from '@angular/forms';
 
@@ -16,9 +17,11 @@ export class LoginPage implements OnInit {
   public status:string;
   public token:string;
   public identity:any;
+  public roles:any;
 
   constructor(
-    private _router:Router
+    private _router:Router,
+    private _alert:AlertController
   ) {
     this.user = new User(1,'','','','','','',[]);
     this.status = '';
@@ -36,18 +39,24 @@ export class LoginPage implements OnInit {
     this._userService.login(this.user.email,this.user.password).subscribe(
       (response:any) => {
         if(response){
+
          console.log(response);
 
-         this.token = response.token;
-         this.identity = response.identity;
+         this.roles =  response.roles;
 
-         console.log(this.token);
-         console.log(this.identity);
-
-         localStorage.setItem('identity',JSON.stringify(this.identity));
-         localStorage.setItem('token',this.token);
-
-          this.status = 'success';
+         if(this.roles[0].name == "Super-Administrador"){
+             this._router.navigate(['/super-admin']);
+             this.status = 'success';
+         }
+             this.token = response.token;
+             this.identity = response.identity;
+    
+             console.log(this.token);
+             console.log(this.identity);
+    
+             localStorage.setItem('identity',JSON.stringify(this.identity));
+             localStorage.setItem('token',this.token);
+          
           form.reset();
         }else{
           this.status = 'error';

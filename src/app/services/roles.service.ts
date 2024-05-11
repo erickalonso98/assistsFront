@@ -3,19 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { global } from './global';
 import { User } from '../models/User';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
   private _http = inject(HttpClient);
+  private _userService = inject(UsersService);
   public url:string;
   constructor() {
     this.url = global.url;
    }
 
    public getRoles(){
-    return this._http.get<User[]>(`${this.url}/roles`);
+    var headers = this._userService.getHeaders();
+    return this._http.get<User[]>(`${this.url}/roles`,{ headers });
    }
 
 }
