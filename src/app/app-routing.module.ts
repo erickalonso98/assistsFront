@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'super-admin',
     loadChildren: () => import('./components/super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
   },
+  {
+    path: 'list-permissions',
+    loadChildren: () => import('./components/list-permissions/list-permissions.module').then( m => m.ListPermissionsPageModule)
+  },
 ];
 
 @NgModule({
