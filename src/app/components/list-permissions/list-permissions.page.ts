@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { PermissionsService } from 'src/app/services/permissions.service';
+import { Permission } from 'src/app/models/Permission';
 
 @Component({
   selector: 'app-list-permissions',
@@ -9,6 +10,7 @@ import { PermissionsService } from 'src/app/services/permissions.service';
 export class ListPermissionsPage implements OnInit {
 
   private _permissionsService = inject(PermissionsService);
+  public permissions:Array<Permission>;
 
   constructor() { }
 
@@ -20,7 +22,8 @@ export class ListPermissionsPage implements OnInit {
     this._permissionsService.getPermissions().subscribe(
       (response:any) => {
         if(response){
-          console.log(response);
+          this.permissions = response.permissions;
+          console.log(this.permissions);
         }
       }
     );

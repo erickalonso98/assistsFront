@@ -13,4 +13,15 @@
       <ion-title size="large">list-roles</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-card>
+      <ion-card-content>
+        <ion-item-sliding>
+          <ion-list [inset]="true">
+            <ion-item [button]="true" *ngFor="let roles of this.roles" >
+              <ion-label>{{ roles.id }}.- {{ roles.name }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-item-sliding>
+      </ion-card-content>
+  </ion-card>
 </ion-content>

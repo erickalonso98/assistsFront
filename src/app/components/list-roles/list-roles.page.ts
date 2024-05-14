@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RolesService } from 'src/app/services/roles.service';
+import { Role } from 'src/app/models/Role';
 
 @Component({
   selector: 'app-list-roles',
@@ -9,6 +10,7 @@ import { RolesService } from 'src/app/services/roles.service';
 export class ListRolesPage implements OnInit {
 
   private _rolesService = inject(RolesService);
+  public roles:Role[];
 
   constructor() { }
 
@@ -18,8 +20,11 @@ export class ListRolesPage implements OnInit {
 
   public GetRoles(){
     this._rolesService.getRoles().subscribe(
-      (response) => {
-        console.log(response);
+      (response:any) => {
+        if(response){
+          this.roles = response.roles;
+          console.log(this.roles);
+        }
       }
     );
   }

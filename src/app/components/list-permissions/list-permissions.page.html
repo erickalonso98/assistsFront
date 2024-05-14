@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>list-permissions</ion-title>
+    <ion-title>lista de Permisos</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="super-admin"></ion-back-button>
     </ion-buttons>
@@ -13,4 +13,15 @@
       <ion-title size="large">list-permissions</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-card>
+    <ion-card-content>
+      <ion-item-sliding>
+        <ion-list [inset]="true">
+          <ion-item [button]="true" *ngFor="let permission of this.permissions" >
+            <ion-label>{{ permission.id }}.- {{ permission.name }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-item-sliding>
+    </ion-card-content>
+</ion-card>
 </ion-content>
