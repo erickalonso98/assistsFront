@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,11 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'list-roles',
-    loadChildren: () => import('./components/list-roles/list-roles.module').then( m => m.ListRolesPageModule)
+    loadChildren: () => import('./components/list-roles/list-roles.module').then( m => m.ListRolesPageModule),
+    canActivate: [authGuard] 
   },
   {
     path: 'users-list',
-    loadChildren: () => import('./components/users-list/users-list.module').then( m => m.UsersListPageModule)
+    loadChildren: () => import('./components/users-list/users-list.module').then( m => m.UsersListPageModule),
+    canActivate: [authGuard] 
   },
   {
     path: 'login',
@@ -25,23 +28,28 @@ const routes: Routes = [
   },
   {
     path: 'super-admin',
-    loadChildren: () => import('./components/super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
+    loadChildren: () => import('./components/super-admin/super-admin.module').then( m => m.SuperAdminPageModule),
+    canActivate: [authGuard] 
   },
   {
     path: 'list-permissions',
-    loadChildren: () => import('./components/list-permissions/list-permissions.module').then( m => m.ListPermissionsPageModule)
+    loadChildren: () => import('./components/list-permissions/list-permissions.module').then( m => m.ListPermissionsPageModule),
+    canActivate: [authGuard] 
   },
   {
     path: 'member-list',
-    loadChildren: () => import('./components/member-list/member-list.module').then( m => m.MemberListPageModule)
+    loadChildren: () => import('./components/member-list/member-list.module').then( m => m.MemberListPageModule),
+    canActivate: [authGuard] 
   },
   {
     path: 'event',
-    loadChildren: () => import('./components/event/event.module').then( m => m.EventPageModule)
+    loadChildren: () => import('./components/event/event.module').then( m => m.EventPageModule),
+    canActivate: [authGuard] 
   },
   {
     path: 'footers',
-    loadChildren: () => import('./components/footers/footers.module').then( m => m.FootersPageModule)
+    loadChildren: () => import('./components/footers/footers.module').then( m => m.FootersPageModule),
+    canActivate: [authGuard] 
   },
 ];
 
