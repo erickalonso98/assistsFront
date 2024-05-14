@@ -19,6 +19,9 @@ export class LoginPage implements OnInit {
   public identity:any;
   public roles:any;
 
+  public text:string
+  public reserved:string;
+
   constructor(
     private _router:Router,
     private _alert:AlertController
@@ -26,6 +29,8 @@ export class LoginPage implements OnInit {
     this.user = new User(1,'','','','','','',[]);
     this.status = '';
     this.token = '';
+    this.text = '2024 Erick de Jesus Alonso Angel.';
+    this.reserved = 'Todos los derechos reservados';
    }
 
   ngOnInit() {

@@ -31,6 +31,18 @@ const routes: Routes = [
     path: 'list-permissions',
     loadChildren: () => import('./components/list-permissions/list-permissions.module').then( m => m.ListPermissionsPageModule)
   },
+  {
+    path: 'member-list',
+    loadChildren: () => import('./components/member-list/member-list.module').then( m => m.MemberListPageModule)
+  },
+  {
+    path: 'event',
+    loadChildren: () => import('./components/event/event.module').then( m => m.EventPageModule)
+  },
+  {
+    path: 'footers',
+    loadChildren: () => import('./components/footers/footers.module').then( m => m.FootersPageModule)
+  },
 ];
 
 @NgModule({

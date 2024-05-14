@@ -8,8 +8,12 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   public title:string;
+  public text:string
+  public reserved:string;
   constructor(private _router:Router) {
     this.title = "Aplicacion de Asistencias";
+    this.text = '2024 Erick de Jesus Alonso Angel.';
+    this.reserved = 'Todos los derechos reservados';
   }
 
   public toLogin(){

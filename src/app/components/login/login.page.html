@@ -6,7 +6,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content color="light" class="ion-padding">
   <ion-card>
     <ion-card-header>
       <ion-card-title class="ion-text-center">
@@ -36,3 +36,11 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="ion-text-center">
+    <p>
+      <ion-text [ngStyle]="{'font-size':'11px'}">&copy; {{ this.text }} {{ this.reserved }}</ion-text>
+    </p>
+  </ion-toolbar>
+</ion-footer>
