@@ -51,6 +51,16 @@ const routes: Routes = [
     loadChildren: () => import('./components/footers/footers.module').then( m => m.FootersPageModule),
     canActivate: [authGuard] 
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./components/admin/admin.module').then( m => m.AdminPageModule),
+    canActivate: [authGuard] 
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./components/user/user.module').then( m => m.UserPageModule),
+    canActivate: [authGuard] 
+  },
 ];
 
 @NgModule({

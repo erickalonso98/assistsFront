@@ -48,10 +48,21 @@ export class LoginPage implements OnInit {
          console.log(response);
 
          this.roles =  response.roles;
+         console.log(this.roles);
 
          if(this.roles[0].name == "Super-Administrador"){
              this._router.navigate(['/super-admin']);
              this.status = 'success';
+         }
+
+         if(this.roles[0].name == "Administrador"){
+            this._router.navigate(['/admin']);
+            this.status = 'success';
+         }
+
+         if(this.roles[0].name == "Usuario-Miembro"){
+            this._router.navigate(['/user']);
+            this.status = 'success';
          }
              this.token = response.token;
              this.identity = response.identity;
