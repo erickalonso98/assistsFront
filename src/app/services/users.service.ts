@@ -41,6 +41,14 @@ export class UsersService {
       return this._http.post(`${this.url}/register`,json,{ headers });
    }
 
+   public UploadImage(image:File){
+      var formData:FormData = new FormData();
+      formData.append("file",image,image.name);
+
+      var headers = this.getHeaders().append('Accept', 'application/json');
+      return this._http.post(`${this.url}/user/upload`,formData,{ headers });
+   }
+
    public login(email:string,password:string){
       var params = {
          email:email,
