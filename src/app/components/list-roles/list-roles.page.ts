@@ -12,7 +12,9 @@ export class ListRolesPage implements OnInit {
   private _rolesService = inject(RolesService);
   public roles:Role[];
 
-  constructor() { }
+  constructor() {
+    this.roles = [];
+   }
 
   ngOnInit() {
     this.GetRoles();

@@ -12,7 +12,9 @@ export class ListPermissionsPage implements OnInit {
   private _permissionsService = inject(PermissionsService);
   public permissions:Array<Permission>;
 
-  constructor() { }
+  constructor() {
+    this.permissions = [];
+   }
 
   ngOnInit() {
     this.getPermission();

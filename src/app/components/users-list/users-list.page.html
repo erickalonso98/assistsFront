@@ -28,52 +28,10 @@
     </ion-card-content>
   </ion-card>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button id="open-modal">
+    <ion-fab-button (click)="this.openModal()">
       <ion-icon name="add"></ion-icon>
-      <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
-        <ng-template>
-          <ion-header>
-            <ion-toolbar>
-              <ion-buttons slot="start">
-                <ion-button (click)="cancel()">Cancelar</ion-button>
-              </ion-buttons>
-              <ion-buttons slot="end">
-                <ion-button (click)="confirm()" [strong]="true">Confirmar</ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ion-header>
-          <ion-content class="ion-padding">
-            <form #registerUser="ngForm" (ngSubmit)="this.onSubmit(registerUser)">
-              <ion-item>
-                <ion-input type="text" #name="ngModel" name="name" [(ngModel)]="this.user.name" label="Nombre" labelPlacement="floating" [counter]="true" maxlength="20"></ion-input>
-                <div slot="label" *ngIf="!this.name.valid && this.name.touched">
-                  Ingrese su nombre
-                </div>
-              </ion-item>
-              <ion-item>
-                <ion-input type="text" label="Apellidos" #surnames="ngModel" name="surnames" [(ngModel)]="this.user.surnames" labelPlacement="floating" [counter]="true" maxlength="20"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input type="email" #email="ngModel" name="email" [(ngModel)]="this.user.email" label="Correo" labelPlacement="floating" [counter]="true" maxlength="20"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input type="password" #password="ngModel" name="password" [(ngModel)]="this.user.password" label="Contraseña" labelPlacement="floating" [counter]="true" maxlength="20"></ion-input>
-                <div slot="label" *ngIf="!this.password.valid && this.password.touched">
-                  <ion-text color="danger">
-                    Ingrese su contraseña
-                  </ion-text>
-              </div>
-              </ion-item>
-              <ion-item>
-                <ion-textarea #description="ngModel" name="description" [(ngModel)]="this.user.description" label="Descripcion" labelPlacement="floating" [counter]="true" maxlength="20"></ion-textarea>
-              </ion-item>
-              <div class="ion-text-center">
-                <ion-button type="submit" fill="outline" [disabled]="this.registerUser.invalid">Registrar</ion-button>
-              </div>
-            </form>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
     </ion-fab-button>
   </ion-fab>
-</ion-content>
+
+  
+ 

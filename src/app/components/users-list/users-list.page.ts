@@ -1,7 +1,5 @@
-import { Component, OnInit,inject, ViewChild, AfterViewInit  } from '@angular/core';
+import { Component, OnInit,inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { IonModal } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core/components';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/models/User';
 
@@ -15,37 +13,21 @@ export class UsersListPage implements OnInit {
   private _userService = inject(UsersService);
   public status:string;
   public user:User;
-  public name: string;
   public ListUser:User[];
-  public message:string;
-
-  @ViewChild(IonModal) modal: IonModal;
+  
 
   constructor() { 
     this.status = '';
-    this.name = '';
     this.user = new User(1,'','','','','','',[]);
-    this.message = '';
+    this.ListUser = [];
   }
 
   ngOnInit() {
     this.getUsers();
   }
 
-  
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
-  }
+  public openModal(){
 
-  confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-  }
-
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}!`;
-    }
   }
 
   public getUsers(){
@@ -58,10 +40,6 @@ export class UsersListPage implements OnInit {
         }
       }
     );
-  }
-
-  public onSubmit(form:NgForm){
-
   }
 
 }
